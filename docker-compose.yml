@@ -1,0 +1,50 @@
+﻿services:
+  mongodb:
+    image: mongo:4
+    container_name: genieacs-mongodb
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - genieacs-network
+    restart: unless-stopped
+
+  genieacs:
+    image: drumsergio/genieacs:latest
+    container_name: genieacs
+    depends_on:
+      - mongodb
+    environment:
+      - GENIEACS_UI_JWT_SECRET=secret
+      - GENIEACS_MONGODB_CONNECTION_URL=mongodb://mongodb:27017/genieacs
+      - GENIEACS_NBI_ACCESS_LOG_FILE=/var/log/genieacs/nbi-access.log
+      - GENIEACS_NBI_CORS_ORIGIN=*
+      - GENIEACS_NBI_CORS_METHODS=GET,HEAD,PUT,PATCH,POST,DELETE
+      - GENIEACS_NBI_CORS_HEADERS=content-type,authorization
+    ports:
+      - "7547:7547"
+      - "7557:7557"
+      - "7567:7567"
+      - "3000:3000"
+    networks:
+      - genieacs-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: genieacs-frontend
+    ports:
+      - "3001:80"
+    depends_on:
+      - genieacs
+    networks:
+      - genieacs-network
+    restart: unless-stopped
+
+networks:
+  genieacs-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
