@@ -32,7 +32,7 @@ docker-compose up -d
 
 3. **Access the applications:**
    - **Frontend Interface**: http://localhost:3001
-   - **GenieACS Web UI**: http://localhost:3000
+   - **GenieACS Web UI**: http://localhost:4000
    - **GenieACS API**: http://localhost:7557
 
 ## Development
@@ -78,7 +78,7 @@ This will start:
 - GenieACS services (cwmp, nbi, fs)
 - React frontend development server
 
-The frontend will be available at http://localhost:3000
+The frontend will be available at http://localhost:4000
 
 ## Environment Variables
 

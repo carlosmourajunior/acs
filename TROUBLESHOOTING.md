@@ -113,14 +113,14 @@ docker-compose up -d
 
 ## URLs de Teste
 
-- **GenieACS UI**: http://localhost:3000
+- **GenieACS UI**: http://localhost:4000
 - **GenieACS API**: http://localhost:7557/devices
 - **Frontend**: http://localhost:3001
 - **API via Proxy**: http://localhost:3001/api/devices
 
 ## Se o problema persistir
 
-1. Verifique se as portas 3000, 7557 e 3001 não estão sendo usadas por outros processos
+1. Verifique se as portas 4000, 7557 e 3001 não estão sendo usadas por outros processos
 2. Reinicie o Docker Desktop
 3. Execute `docker-compose down` seguido de `docker-compose up -d --build`
 4. Verifique os logs do GenieACS para erros específicos

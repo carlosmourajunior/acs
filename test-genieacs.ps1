@@ -24,9 +24,9 @@ function Test-HttpConnection {
 $nbiUrl = "http://localhost:7557/devices"
 Test-HttpConnection -Url $nbiUrl -Description "GenieACS NBI (REST API) on port 7557"
 
-# Verificar se o GenieACS está rodando na porta 3000 (Web Interface)
-$uiUrl = "http://localhost:3000"
-Test-HttpConnection -Url $uiUrl -Description "GenieACS UI on port 3000"
+# Verificar se o GenieACS está rodando na porta 4000 (Web Interface)
+$uiUrl = "http://localhost:4000"
+Test-HttpConnection -Url $uiUrl -Description "GenieACS UI on port 4000"
 
 # Teste da API de devices com autenticação
 try {
